@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
-import { MaterialModule } from './material/material.module';
-import { BrowserAnimationsModule }     from '@angular/platform-browser/animations';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { MaterialModule } from './modules/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { InMemoryApiService } from './in-memory-api/in-memory-api.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +25,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-MaterialModule,
-BrowserAnimationsModule 
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryApiService),
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { UserService } from './../services/user.service';
+import { Student } from './../models/student';
 
 @Component({
   selector: 'app-user',
@@ -7,10 +9,14 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class UserComponent implements OnInit {
- panelOpenState = false;
-  constructor() { }
- 
+  panelOpenState = false;
+  student: Student;
+  constructor(private userService: UserService) { }
+
   ngOnInit(): void {
+    this.userService.getStudent().subscribe(data => {
+      this.student = data;
+    });
   }
 
 }
