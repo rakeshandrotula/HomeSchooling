@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InMemoryApiService } from './in-memory-api/in-memory-api.service';
+import { VideoModule } from './video/video.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { InMemoryApiService } from './in-memory-api/in-memory-api.service';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    VideoModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryApiService),
     MaterialModule,
     BrowserAnimationsModule

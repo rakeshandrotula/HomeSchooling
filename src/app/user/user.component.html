@@ -1,24 +1,27 @@
-<div *ngIf="student">
-    <mat-toolbar color="primary">
+<div class="container-fluid" *ngIf="student">
+    <mat-toolbar color="primary" class="mt-1">
         <span>{{student.class}}</span>
     </mat-toolbar>
     <mat-tab-group >
         <mat-tab *ngFor="let subject of student.subjects" label="{{subject.name}}">
-            <mat-accordion >
-                <mat-expansion-panel *ngFor="let exercise of subject.exercises">
+            <div class="px-1 py-1">
+            <mat-accordion  >
+                <mat-expansion-panel  *ngFor="let exercise of subject.exercises">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
                       Excercise  {{exercise.name}}
                       </mat-panel-title>
                       <mat-panel-description class="float-right">
-                      Submission Date :  {{exercise.submissionDate}}
+                      Submission Date :  {{exercise.submissionDate | date }}
                       </mat-panel-description>
                     </mat-expansion-panel-header>
                     <div>
                         {{exercise.videoUrl}}
                     </div>
+                    <app-video></app-video>
                   </mat-expansion-panel>
             </mat-accordion>
+        </div>
         </mat-tab>
     </mat-tab-group>
     
