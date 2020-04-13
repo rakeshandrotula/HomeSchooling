@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core'; 
+import { Component, OnInit, ViewEncapsulation } from '@angular/core'; 
 
 @Component({
-  template: './video.html',
+  templateUrl: './video.component.html',
   selector: 'app-video',
+  encapsulation: ViewEncapsulation.None
 })
 export class VideoComponent implements OnInit {
   ngOnInit() {

@@ -26,8 +26,8 @@ import { VideoModule } from './video/video.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule,
     VideoModule,
+    HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryApiService),
     MaterialModule,
     BrowserAnimationsModule
