@@ -1,26 +1,64 @@
 <div class="container-fluid" *ngIf="student">
     <mat-toolbar color="primary" class="mt-1">
-        <span>{{student.class}}</span>
+        <mat-chip-list>
+        <mat-chip color="accent">{{student.class}}</mat-chip></mat-chip-list>
+        <span class="example-fill-remaining-space"></span>
+        <button mat-icon-button>
+            <mat-icon matBadge="3" matBadgeColor="accent">assignment_turned_in</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon >message</mat-icon>
+        </button>
+        <button mat-icon-button>
+            <mat-icon matBadge="5" matBadgeColor="warn">local_phone</mat-icon>
+        </button>
     </mat-toolbar>
-    <mat-tab-group >
+    <mat-tab-group>
         <mat-tab *ngFor="let subject of student.subjects" label="{{subject.name}}">
             <div class="px-1 py-1">
-            <mat-accordion  >
-                <mat-expansion-panel  *ngFor="let exercise of subject.exercises">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                      Excercise  {{exercise.name}}
-                      </mat-panel-title>
-                      <mat-panel-description class="float-right">
+                <mat-accordion>
+                    <mat-expansion-panel *ngFor="let exercise of subject.exercises" class="my-1">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Excercise {{exercise.name}}
+                            </mat-panel-title>
+                            <!-- <mat-panel-description class="float-right">
                       Submission Date :  {{exercise.submissionDate | date }}
-                      </mat-panel-description>
-                    </mat-expansion-panel-header>
-                   
-                    <app-video></app-video>
-                  </mat-expansion-panel>
-            </mat-accordion>
-        </div>
+                      </mat-panel-description> -->
+                        </mat-expansion-panel-header>
+                        <div class="row">
+                            <div class="col-lg-4 col-sm-12 col-xs-12">
+                                <app-video [videoId]="exercise.videoUrl"></app-video>
+                            </div>
+                            <div class="col-lg-4 col-sm-12 col-xs-12">
+                                <mat-card>
+                                    <mat-card-header>
+                                        <mat-card-title> Answers</mat-card-title>
+                                        <span class="example-fill-remaining-space"></span>
+                                        <button mat-icon-button (click)="addAnswer(exercise.answers)">
+                                            <mat-icon>add</mat-icon>
+                                        </button>
+
+                                    </mat-card-header>
+                                    <ol>
+                                        <li *ngFor="let answer of exercise.answers">
+                                            <a href=""> {{answer.name}} - {{answer.attachmentUrl}}</a>
+                                        </li>
+                                    </ol>
+                                </mat-card>
+                            </div>
+                            <div class="col-lg-4 col-sm-12 col-xs-12">
+                                <div class="row float-right">
+                                    Submission Date : {{exercise.submissionDate | date }}</div>
+                            </div>
+                        </div>
+                        <div class="row float-right">
+                            <button mat-raised-button color="primary">Submit Exercise</button>
+                        </div>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
         </mat-tab>
     </mat-tab-group>
-    
+
 </div>

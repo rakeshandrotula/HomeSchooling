@@ -16,19 +16,19 @@ export class InMemoryApiService implements InMemoryDbService {
 
     const exercises: Exercise[] = [{
       name: 'Substraction',
-      videoUrl: 'https://www.youtube.com/watch?v=_Gr_jvF_ueY',
+      videoUrl: 'TBbT-ZXPUCY',
       submissionDate: new Date(),
       answers: answers
     },
     {
       name: 'Addition',
-      videoUrl: 'https://www.youtube.com/watch?v=_Gr_jvF_ueY',
+      videoUrl: 'TBbT-ZXPUCY',
       submissionDate: new Date(),
       answers: answers
     },
     {
       name: 'Multiplication',
-      videoUrl: 'https://www.youtube.com/watch?v=_Gr_jvF_ueY',
+      videoUrl: 'TBbT-ZXPUCY',
       submissionDate: new Date(),
       answers: answers
     }];

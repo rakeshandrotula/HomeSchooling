@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from './../services/user.service';
-import { Student } from './../models/student';
+import { Student, Answer } from './../models/student';
 
 @Component({
   selector: 'app-user',
@@ -17,6 +17,11 @@ export class UserComponent implements OnInit {
     this.userService.getStudent().subscribe(data => {
       this.student = data;
     });
+  }
+
+  addAnswer(answer: Answer[]) : void{
+    let ans : Answer = {name:'New Name', attachmentUrl:'www.dummy1.com'}
+    answer.push(ans);
   }
 
 }
