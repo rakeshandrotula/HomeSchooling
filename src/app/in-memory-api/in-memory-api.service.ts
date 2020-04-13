@@ -41,7 +41,7 @@ export class InMemoryApiService implements InMemoryDbService {
         name: 'German',
         exercises: exercises
       }, {
-        name: 'Dutch - Test',
+        name: 'Dutch - Test 2',
         exercises: exercises
       }];
 
