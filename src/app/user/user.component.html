@@ -46,7 +46,7 @@
                             <!--Submit Exercise START-->
                         <div class="row float-right">
                             <button mat-raised-button color="primary" (click)="showFileUpload.showUpload = true;">
-                                Turn In</button>
+                                <mat-icon>check</mat-icon> Turn In</button>
                         </div>
                         </div>
                         <mat-expansion-panel (hideToggle)="true" (opened)="panelOpenState = true"
@@ -152,7 +152,7 @@
                         <!--Submit Exercise START-->
                         <div class="row float-right">
                             <button mat-raised-button color="primary" (click)="showFileUpload.showUpload = true;">
-                                Submit Exercise</button>
+                                <mat-icon>publish</mat-icon> Submit Exercise</button>
                         </div>
 
                         <div class="row float-right" *ngIf="showFileUpload.showUpload">
@@ -163,9 +163,11 @@
                                     <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                                 </div>
                                 <button mat-raised-button matTooltip='Cancel Upload' color="primary"
-                                    (click)="showFileUpload.showUpload = false">Cancel</button>
+                                    (click)="showFileUpload.showUpload = false">
+                                    <mat-icon>cancel</mat-icon> Cancel</button>
                                 <button mat-raised-button color="primary"
-                                    (click)="showFileUpload.showUpload = false" matTooltip='Upload selected file'>Upload</button>
+                                    (click)="showFileUpload.showUpload = false" matTooltip='Upload selected file'>
+                                    <mat-icon>cloud_upload</mat-icon> Upload</button>
                             </ol>
                         </div>
                         <!--Submit Exercise  END-->
