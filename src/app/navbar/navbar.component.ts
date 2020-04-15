@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import{ GlobalConstants } from '../common/global-constants';
 
 @Component({
   selector: 'app-navbar',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
+  loginDisplayName: string = GlobalConstants.displayUserName;
   constructor() { }
 
   ngOnInit(): void {

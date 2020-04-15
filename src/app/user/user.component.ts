@@ -1,6 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from './../services/user.service';
 import { Student, Answer } from './../models/student';
+import { HostListener } from '@angular/core';
+
+declare var require: any
+const FileSaver = require('file-saver');
 
 @Component({
   selector: 'app-user',
@@ -10,7 +14,8 @@ import { Student, Answer } from './../models/student';
 })
 export class UserComponent implements OnInit {
   panelOpenState = false;
-  student: Student;
+  student: Student; 
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -24,4 +29,28 @@ export class UserComponent implements OnInit {
     answer.push(ans);
   }
 
+  downloadPdf(pdfUrl: string, pdfName: string ) {
+    //const pdfUrl = './assets/sample.pdf';
+    //const pdfName = 'your_pdf_file';
+    FileSaver.saveAs(pdfUrl, pdfName);
+//    FileSaver.saveAs('https://file-examples.com/wp-content/uploads/2017/10/file-example_PDF_500_kB.pdf', pdfName);
+//    FileSaver.saveAs('../../assets/pdf/bruchteil-muster.pdf', pdfName);
+
+  }
+
+  openDoc(pdfUrl: string) {
+    window.open(pdfUrl, '_blank', '', true);
+  }
+
+  /*Show upload div*/
+  showFileUpload = {
+    showUpload : false
+  }
+
+  @HostListener('document:mouseover', ['$event'])
+    mouseover(event) {
+        if(event.target.matches('.mOver')) {
+            alert('hover to editor div')
+        }
+    }
 }
