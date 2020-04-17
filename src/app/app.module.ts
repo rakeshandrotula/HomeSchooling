@@ -14,6 +14,7 @@ import { UserComponent } from './user/user.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { InMemoryApiService } from './in-memory-api/in-memory-api.service';
 import { VideoModule } from './video/video.module';
+import { MDBModal} from "mdbreact";
 
 @NgModule({
   declarations: [

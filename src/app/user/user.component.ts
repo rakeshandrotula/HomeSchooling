@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from './../services/user.service';
 import { Student, Answer } from './../models/student';
 import { HostListener } from '@angular/core';
+import { MDBModal} from "mdbreact";
 
 declare var require: any
 const FileSaver = require('file-saver');
@@ -47,6 +48,11 @@ export class UserComponent implements OnInit {
     showUpload : false
   }
 
+  /*Show Question div*/
+  showQuestionDialog = {
+    showQ : false
+  }
+  
   @HostListener('document:mouseover', ['$event'])
     mouseover(event) {
         if(event.target.matches('.mOver')) {

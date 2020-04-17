@@ -27,7 +27,10 @@
                             Submission Date : {{exercise.submissionDate | date }}
                             <!--/mat-panel-description-->
                         </mat-expansion-panel-header>
-
+                        <div class="row float-right">
+                            <button mat-raised-button color="primary" (click)="showFileUpload.showUpload = true;">
+                                <mat-icon>check</mat-icon> Turn In</button>
+                        </div>
                         <div class="col-lg-4 col-sm-12 col-xs-12">
                             <ol>
                                 <a href="javascript:void(0)" style="cursor:pointer"
@@ -42,38 +45,34 @@
                                     (click)="downloadPdf('../../assets/pdf/bruchteil-muster.pdf','exerciseFromTeacher')">
                                     <mat-icon>get_app</mat-icon>
                                 </button>
-                            </ol>
-                            <!--Submit Exercise START-->
-                        <div class="row float-right">
-                            <button mat-raised-button color="primary" (click)="showFileUpload.showUpload = true;">
-                                <mat-icon>check</mat-icon> Turn In</button>
+                            </ol>                    
                         </div>
-                        </div>
-                        <mat-expansion-panel (hideToggle)="true" (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false">
-                            <!-- 
-                       <mat-expansion-panel 
-                                    class="expansion-panel-class" 
-                                    #panel 
-                                    (mouseenter)="panel.open()"
-                                    (mouseleave)="panel.close()"
-                                    >  -->
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    Exercise Explanation (expansion)
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
-                            <div class="col-lg-4 col-sm-12 col-xs-12">
-                                <app-video [videoId]="exercise.videoUrl"></app-video>
-                            </div>
-                        </mat-expansion-panel>
-                        <div class="col-lg-4 col-sm-12 col-xs-12">
+                        
+                        <table><tr><th>
+                        <div class="col-lg-4 col-sm-12 col-xs-12">                            
                             <app-video [videoId]="exercise.videoUrl"></app-video>
-                            <button mat-icon-button matTooltip='Ask a question'>
+                        </div>
+                            </th><th>
+                            <div class="col-lg-4 col-sm-12 col-xs-12">
+                            <div class="row float-right">
+                                <button mat-icon-button matTooltip='Ask a question' (click)="showQuestionDialog.showQ = true;">
                                     <mat-icon>help</mat-icon>
                                 </button>
-                        </div>
-
+                            </div>
+                           
+                            <div class="row" *ngIf="showQuestionDialog.showQ">
+                                <ol>
+                                    <button mat-raised-button matTooltip='Type your question' color="primary"
+                                        (click)="showQuestionDialog.showQ = false">
+                                        Chat</button>
+                                    <button mat-raised-button color="primary"
+                                        (click)="showQuestionDialog.showQ = false" matTooltip='Record your question'>
+                                        Record</button>
+                                </ol>
+                            </div>
+                                                </div>
+                                            </th></tr></table>
+                                            
                         <!-- Question and Answers -->
                         <div class="row">
                             <div class="col-lg-4 col-sm-12 col-xs-12">
@@ -155,8 +154,11 @@
                                 <mat-icon>publish</mat-icon> Submit Exercise</button>
                         </div>
 
+                        
+             <!--       <mat-expansion-panel class="my-1">
+                 -->              
                         <div class="row float-right" *ngIf="showFileUpload.showUpload">
-                            <ol>
+                            <ol>               
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="inputGroupFile01"
                                         aria-describedby="inputGroupFileAddon01">
@@ -170,7 +172,33 @@
                                     <mat-icon>cloud_upload</mat-icon> Upload</button>
                             </ol>
                         </div>
-                        <!--Submit Exercise  END-->
+                  <!--      
+                    </mat-expansion-panel>
+                    -->  
+                    <!--Submit Exercise  END-->
+
+                        <!-- Video thumbnail popup modal START-->
+                        <!--
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-4">
+                              <a><img class="img-fluid z-depth-1" src="https://mdbootstrap.com/img/screens/yt/screen-video-1.jpg" alt="video" (click)="videoModal1.show()"></a>
+                            </div>
+                        </div>          
+                        <div mdbModal #videoModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myVideoModal1Label"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body mb-0 p-0">
+                                        <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/wTcNtgA6gHs" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        -->
+                        <!-- Video thumbnail popup modal END-->                        
+
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>
