@@ -1,14 +1,13 @@
 <div class="container-fluid" *ngIf="student">
     <mat-toolbar color="primary" class="mt-1">
         <mat-chip-list>
-            <mat-chip color="accent">{{student.class}}</mat-chip>
-        </mat-chip-list>
+        <mat-chip color="accent">{{student.class}}</mat-chip></mat-chip-list>
         <span class="example-fill-remaining-space"></span>
         <button mat-icon-button>
             <mat-icon matBadge="3" matBadgeColor="accent">assignment_turned_in</mat-icon>
         </button>
         <button mat-icon-button>
-            <mat-icon>message</mat-icon>
+            <mat-icon >message</mat-icon>
         </button>
         <button mat-icon-button>
             <mat-icon matBadge="5" matBadgeColor="warn">local_phone</mat-icon>
@@ -23,149 +22,39 @@
                             <mat-panel-title>
                                 Excercise {{exercise.name}}
                             </mat-panel-title>
-                            <!--mat-panel-description class="row float-right" -->
-                            Submission Date : {{exercise.submissionDate | date }}
-                            <!--/mat-panel-description-->
+                            <!-- <mat-panel-description class="float-right">
+                      Submission Date :  {{exercise.submissionDate | date }}
+                      </mat-panel-description> -->
                         </mat-expansion-panel-header>
-
-                        <div class="col-lg-4 col-sm-12 col-xs-12">
-                            <ol>
-                                <a href="javascript:void(0)" style="cursor:pointer"
-                                    (click)="downloadPdf('../../assets/pdf/bruchteil-muster.pdf','exerciseFromTeacher')">
-                                    Exercise From Teacher.pdf
-                                </a>
-
-                                <button mat-icon-button (click)="openDoc('../../assets/pdf/bruchteil-muster.pdf')">
-                                    <mat-icon>visibility</mat-icon>
-                                </button>
-                                <button mat-icon-button
-                                    (click)="downloadPdf('../../assets/pdf/bruchteil-muster.pdf','exerciseFromTeacher')">
-                                    <mat-icon>get_app</mat-icon>
-                                </button>
-                            </ol>
-                            <!--Submit Exercise START-->
-                        <div class="row float-right">
-                            <button mat-raised-button color="primary" (click)="showFileUpload.showUpload = true;">
-                                Turn In</button>
-                        </div>
-                        </div>
-                        <mat-expansion-panel (hideToggle)="true" (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false">
-                            <!-- 
-                       <mat-expansion-panel 
-                                    class="expansion-panel-class" 
-                                    #panel 
-                                    (mouseenter)="panel.open()"
-                                    (mouseleave)="panel.close()"
-                                    >  -->
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    Exercise Explanation (expansion)
-                                </mat-panel-title>
-                            </mat-expansion-panel-header>
+                        <div class="row">
                             <div class="col-lg-4 col-sm-12 col-xs-12">
                                 <app-video [videoId]="exercise.videoUrl"></app-video>
                             </div>
-                        </mat-expansion-panel>
-                        <div class="col-lg-4 col-sm-12 col-xs-12">
-                            <app-video [videoId]="exercise.videoUrl"></app-video>
-                        </div>
-
-                        <!-- Question and Answers -->
-                        <div class="row">
                             <div class="col-lg-4 col-sm-12 col-xs-12">
                                 <mat-card>
                                     <mat-card-header>
-                                        <mat-card-title> Question and Answers</mat-card-title>
-                                    </mat-card-header>
-                                    <!--From Student-->
-
-                                    <ol>
-                                        <a href="javascript:void(0)" style="cursor:pointer">Your Question.wav</a>
-
-                                        <button mat-icon-button matTooltip='View your Question'>
-                                            <mat-icon>play_circle_filled</mat-icon>
-                                        </button>
-                                        <button mat-icon-button matTooltip='Delete your Question'>
-                                            <mat-icon>delete</mat-icon>
-                                        </button>
-                                    </ol>
-
-                                    <!--From Teacher-->
-                                    <ol>
-                                        <a href="javascript:void(0)" style="cursor:pointer">Reply from teacher.wav</a>
-
-                                        <button mat-icon-button matTooltip='View Teachers Reply'>
-                                            <mat-icon>play_circle_filled</mat-icon>
-                                        </button>
-                                    </ol>
-                                </mat-card>
-                            </div>
-                        </div>
-
-                        <!-- Turned in by Students -->
-
-                        <div class="row">
-                            <div class="col-lg-4 col-sm-12 col-xs-12">
-                                <mat-card>
-                                    <mat-card-header>
-                                        <mat-card-title> Turned in Exercises</mat-card-title>
-
-                                        <!-- <span class="example-fill-remaining-space"></span>
+                                        <mat-card-title> Answers</mat-card-title>
+                                        <span class="example-fill-remaining-space"></span>
                                         <button mat-icon-button (click)="addAnswer(exercise.answers)">
                                             <mat-icon>add</mat-icon>
                                         </button>
--->
+
                                     </mat-card-header>
                                     <ol>
-                                        <!--    <li *ngFor="let answer of exercise.answers">
-                                                <a href=""> {{answer.name}} - {{answer.attachmentUrl}}</a>
-                                            </li>
-                                        -->
-                                        <a href="javascript:void(0)" style="cursor:pointer"
-                                            (click)="downloadPdf('../../assets/pdf/completedExercise.pdf','Turned In')">
-                                            Completed Exercise.pdf
-                                        </a>
-
-                                        <button mat-icon-button
-                                            (click)="openDoc('../../assets/pdf/completedExercise.pdf')">
-                                            <mat-icon>visibility</mat-icon>
-                                        </button>
-                                        <button mat-icon-button
-                                            (click)="downloadPdf('../../assets/pdf/completedExercise.pdf','Turned In')">
-                                            <mat-icon>get_app</mat-icon>
-                                        </button>
-
+                                        <li *ngFor="let answer of exercise.answers">
+                                            <a href=""> {{answer.name}} - {{answer.attachmentUrl}}</a>
+                                        </li>
                                     </ol>
-
                                 </mat-card>
                             </div>
-                            <!-- <div class="col-lg-4 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-sm-12 col-xs-12">
                                 <div class="row float-right">
                                     Submission Date : {{exercise.submissionDate | date }}</div>
-                            </div> -->
+                            </div>
                         </div>
-
-                        <!--Submit Exercise START-->
                         <div class="row float-right">
-                            <button mat-raised-button color="primary" (click)="showFileUpload.showUpload = true;">
-                                Submit Exercise</button>
+                            <button mat-raised-button color="primary">Submit Exercise</button>
                         </div>
-
-                        <div class="row float-right" *ngIf="showFileUpload.showUpload">
-                            <ol>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                                        aria-describedby="inputGroupFileAddon01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                                <button mat-raised-button matTooltip='Cancel Upload' color="primary"
-                                    (click)="showFileUpload.showUpload = false">Cancel</button>
-                                <button mat-raised-button color="primary"
-                                    (click)="showFileUpload.showUpload = false" matTooltip='Upload selected file'>Upload</button>
-                            </ol>
-                        </div>
-                        <!--Submit Exercise  END-->
                     </mat-expansion-panel>
                 </mat-accordion>
             </div>

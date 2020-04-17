@@ -15,17 +15,9 @@ export class Exercise{
     videoUrl: string;
     submissionDate: Date;
     answers : Answer[];
-    exerciseFromTeacherUrl : string;
-//}exerciseFromTeacherUrl : ExerciseFromTeacher[];
 }
 
 export class Answer{
     name : string;
     attachmentUrl : string;
 }
-
-/*
-export class ExerciseFromTeacher{
-    name : string;
-    pdfUrl : string;
-}*/

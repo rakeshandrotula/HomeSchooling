@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import{ GlobalConstants } from '../common/global-constants';
 
 @Component({
   selector: 'app-login',
@@ -19,14 +18,10 @@ showSpinner: boolean;
   }
 
   login() : void {
-/*    if(this.username == 'admin' && this.password == 'admin'){
-      this.router.navigate(["user"]);
- */
-    if(this.username != ''){
-      GlobalConstants.displayUserName = this.username;
-      this.router.navigate(["user"]);
-    } else{
-          alert("Invalid credentials");
+    if(this.username == 'admin' && this.password == 'admin'){
+     this.router.navigate(["user"]);
+    }else {
+      alert("Invalid credentials");
     }
   }
 }
